@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Training Log</title>
+<meta name="theme-color" content="#1F3543">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Training Log">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAEoUlEQVR4nO3cXW7TQBSG4WnlFTQtUn9QWQG37IBLFoG4AAlUp11HXFUgwQWL659Q09I1mItUtLT5SpLx8YzPvI98gapiH2a+jM84CWuv370PwDxV27apa0Cm1lMXgHwRDkiEAxLhgFSFQEOK+SqyAYXbCiTCAYlwQKpamg4IrByQ2K1AYuWARDgg8YQUEisHJMIBiXBAYisLqSIbUNitQKLngEQ4/jHZOE1dQkYIx71ZMsjHX+xW7kxGp/d/3jg9un2VrJRs0JCGEMJkdPbkJ6dHt/tJiskHt5U5yXj+5+UoPRzPJ6DwfBQdjkXmvuR8lPuEtFl41iejs8Mi+4/1ENoCj8WTMdOMzpLX3P+xnrqABEczOl/hZdSMzpNX3vNRXM/RbK6SjPi/O0RlhSN+dovKR0Hh6Gpey8lHKeHodkYLyUcRj8+bzQuDc54f/n65+O9//vih8xpCCN9+/LQ47Yz/3YpFMmaazYslKjHCbmVlzZZVMvo5f1rrqV/Yhkc/M9dsXThdOPyuHMc9vqb7vFaf3D4+H9/s9TaI45s9l2uH25Uj3M2Zk6sk4TkcwX7mHCcjlPAZ0vH13vGLS6MzL/7L55e/LGownT7nK8fMUrOY8Jy5cduQPu5Pr3c7HLXx9e7yNRihIe1CV/noNmc5KygcoYt5LScZwfcT0rlHHTG79fXuytc1YjpW/t94e3rU01XyUU93o65rxHKgSmlIHx31dGepKainO9EXNWI4SmX1HA8tno9lk+RGueEIi816sckIhYcj/G/uS05GIBxBJ6DwZIQydytPj/rqcQ7qq52Or2LEclgK3a08Peqr7QfJ2Da4xPDSwW3l3iwfD1NSuHK/ZT/XwdCSYTp9rByQCAekIr7x5prh9Pn/mKBzltPHbQUS4YBUpS6gDwdfPlmc9uTrd4vT5oOGNEYOQ2dYA7cVSFWbQ/qHKYehM62BlQMS4YBEOCCxW4mRw9CZPj4vgNU33L3jtgKJN94i5DB0bGWRBA1pjByGzrIhzeHfN1A5DB2fIUUahAMSu5UIOQydZQ00pDFyGDo+z4EUCAckwgGJcEAiHJCqNodPQg5TDkNnWgMrByTCAYlwQCIckHh8HiOHoeP/58hTDkNn/MabrcPDA4vTNs2JxWnxED0HJMIBqWqzuHMuLYey3dfAygFpsLuVHMr2XgMrByTCAcn8CanZN9y9r+mLoiFFCoQDEuGAxFY2gvcahvot+xzKdl/DcD/PkUPZzmug54BEOCARDkjsViJ4r4GGNIbzGritQCIckAgHJJ6Qrs59DTSkMZzXwFY2gvca6DkgEQ5IhAMS4YDEbiWG8xrYrUTwXgO3FUg8IV2d+xpYOSDRkMZwXgMrByTCAYmtbATvNbByQKIhjeG8BlYOSIQDEk9IV+e+BnYrEbzXsLb/5q3h6TFk9ByQCAckwgGJcEAa7G4F9ob7+BzmuK1AGuoTUvSAlQMS4YBEQwqJrSwkbiuQCAckwgGJhhQSKwekqmXhgMDKAYlwQCIckNitQGLlgEQ4IPHGGyRWDkg0pJD4DCkkbiuQCAckdiuQaEghcVuBRDggEQ5IhAPSH5D275M5/1C2AAAAAElFTkSuQmCC">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAEoUlEQVR4nO3cXW7TQBSG4WnlFTQtUn9QWQG37IBLFoG4AAlUp11HXFUgwQWL659Q09I1mItUtLT5SpLx8YzPvI98gapiH2a+jM84CWuv370PwDxV27apa0Cm1lMXgHwRDkiEAxLhgFSFQEOK+SqyAYXbCiTCAYlwQKpamg4IrByQ2K1AYuWARDgg8YQUEisHJMIBiXBAYisLqSIbUNitQKLngEQ4/jHZOE1dQkYIx71ZMsjHX+xW7kxGp/d/3jg9un2VrJRs0JCGEMJkdPbkJ6dHt/tJiskHt5U5yXj+5+UoPRzPJ6DwfBQdjkXmvuR8lPuEtFl41iejs8Mi+4/1ENoCj8WTMdOMzpLX3P+xnrqABEczOl/hZdSMzpNX3vNRXM/RbK6SjPi/O0RlhSN+dovKR0Hh6Gpey8lHKeHodkYLyUcRj8+bzQuDc54f/n65+O9//vih8xpCCN9+/LQ47Yz/3YpFMmaazYslKjHCbmVlzZZVMvo5f1rrqV/Yhkc/M9dsXThdOPyuHMc9vqb7vFaf3D4+H9/s9TaI45s9l2uH25Uj3M2Zk6sk4TkcwX7mHCcjlPAZ0vH13vGLS6MzL/7L55e/LGownT7nK8fMUrOY8Jy5cduQPu5Pr3c7HLXx9e7yNRihIe1CV/noNmc5KygcoYt5LScZwfcT0rlHHTG79fXuytc1YjpW/t94e3rU01XyUU93o65rxHKgSmlIHx31dGepKainO9EXNWI4SmX1HA8tno9lk+RGueEIi816sckIhYcj/G/uS05GIBxBJ6DwZIQydytPj/rqcQ7qq52Or2LEclgK3a08Peqr7QfJ2Da4xPDSwW3l3iwfD1NSuHK/ZT/XwdCSYTp9rByQCAekIr7x5prh9Pn/mKBzltPHbQUS4YBUpS6gDwdfPlmc9uTrd4vT5oOGNEYOQ2dYA7cVSFWbQ/qHKYehM62BlQMS4YBEOCCxW4mRw9CZPj4vgNU33L3jtgKJN94i5DB0bGWRBA1pjByGzrIhzeHfN1A5DB2fIUUahAMSu5UIOQydZQ00pDFyGDo+z4EUCAckwgGJcEAiHJCqNodPQg5TDkNnWgMrByTCAYlwQCIckHh8HiOHoeP/58hTDkNn/MabrcPDA4vTNs2JxWnxED0HJMIBqWqzuHMuLYey3dfAygFpsLuVHMr2XgMrByTCAcn8CanZN9y9r+mLoiFFCoQDEuGAxFY2gvcahvot+xzKdl/DcD/PkUPZzmug54BEOCARDkjsViJ4r4GGNIbzGritQCIckAgHJJ6Qrs59DTSkMZzXwFY2gvca6DkgEQ5IhAMS4YDEbiWG8xrYrUTwXgO3FUg8IV2d+xpYOSDRkMZwXgMrByTCAYmtbATvNbByQKIhjeG8BlYOSIQDEk9IV+e+BnYrEbzXsLb/5q3h6TFk9ByQCAckwgGJcEAa7G4F9ob7+BzmuK1AGuoTUvSAlQMS4YBEQwqJrSwkbiuQCAckwgGJhhQSKwekqmXhgMDKAYlwQCIckNitQGLlgEQ4IPHGGyRWDkg0pJD4DCkkbiuQCAckdiuQaEghcVuBRDggEQ5IhAPSH5D275M5/1C2AAAAAElFTkSuQmCC">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1D2125; --steel:#2C4A5E; --steel-d:#1F3543; --rust:#9A4A2F;
+    --rust-l:#B85C3D; --soft:#5A6571; --rule:#C4CDD3; --row:#EEF2F4;
+    --bg:#E4E8EA; --card:#FFFFFF; --good:#3C6E47; --hold:#8A6A1E;
+    --disp:'Oswald',sans-serif; --body:'Archivo',-apple-system,Segoe UI,sans-serif;
+    --mono:'Space Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;
+    touch-action:manipulation;}
+  html,body{height:100%;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+  html{overscroll-behavior:none;}
+  body{
+    font-family:var(--body); background:var(--steel-d); color:var(--ink);
+    line-height:1.5; -webkit-font-smoothing:antialiased; overscroll-behavior:none;
+  }
+  .wrap{max-width:760px;margin:0 auto;min-height:100%;background:var(--bg);
+    display:flex;flex-direction:column;
+    padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right);}
+
+  /* ---------- header ---------- */
+  header{
+    background:linear-gradient(155deg,var(--steel) 0%,var(--steel-d) 100%);
+    color:#fff;padding:calc(16px + env(safe-area-inset-top)) 20px 16px;
+    position:relative;overflow:hidden;
+  }
+  header::after{content:"";position:absolute;inset:0;
+    background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.025) 0 1px,transparent 1px 7px);
+    pointer-events:none;}
+  .brand{display:flex;align-items:baseline;gap:10px;}
+  .brand h1{font-family:var(--disp);font-weight:700;font-size:25px;letter-spacing:.06em;
+    text-transform:uppercase;line-height:1;}
+  .brand .tick{width:11px;height:11px;background:var(--rust-l);transform:rotate(45deg);
+    flex:none;}
+  .brand .sub{font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    color:#9FB3BF;font-weight:600;margin-left:auto;}
+
+  /* control bar */
+  .ctl{display:flex;gap:10px;margin-top:14px;}
+  .stepper{flex:1;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);
+    border-radius:8px;padding:7px 9px;}
+  .stepper .lab{font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;
+    color:#9FB3BF;font-weight:700;}
+  .stepper .ln{display:flex;align-items:center;justify-content:space-between;margin-top:3px;}
+  .stepper button{width:30px;height:30px;border:none;border-radius:6px;cursor:pointer;
+    background:rgba(255,255,255,.12);color:#fff;font-size:19px;font-family:var(--disp);
+    line-height:1;display:flex;align-items:center;justify-content:center;}
+  .stepper button:active{background:var(--rust);}
+  .stepper .val{font-family:var(--mono);font-size:21px;font-weight:700;}
+  .ctx{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;}
+  .ctx .phase{font-family:var(--disp);font-weight:600;font-size:15px;letter-spacing:.04em;
+    text-transform:uppercase;}
+  .ctx .sess{font-size:12.5px;color:#A9BDC8;font-weight:500;}
+  .ctx .dl{background:var(--rust);color:#fff;font-size:10px;font-weight:700;
+    letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:4px;}
+  .cycle{display:flex;gap:5px;margin-top:11px;}
+  .cycle .d{flex:1;text-align:center;border-radius:6px;padding:5px 0 4px;
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);}
+  .cycle .d .dn{font-size:8.5px;letter-spacing:.08em;color:#8298A6;font-weight:700;
+    display:block;}
+  .cycle .d .dt{font-family:var(--disp);font-weight:600;font-size:13px;color:#C6D6DF;
+    letter-spacing:.04em;}
+  .cycle .d.on{background:var(--rust);border-color:var(--rust-l);}
+  .cycle .d.on .dn{color:#F2D9CF;} .cycle .d.on .dt{color:#fff;}
+
+  /* tabs */
+  nav{display:flex;background:var(--steel-d);}
+  nav button{flex:1;background:none;border:none;cursor:pointer;color:#8FA3AE;
+    font-family:var(--disp);font-weight:600;font-size:13.5px;letter-spacing:.12em;
+    text-transform:uppercase;padding:13px 4px 11px;border-bottom:3px solid transparent;}
+  nav button.on{color:#fff;border-color:var(--rust-l);background:rgba(255,255,255,.04);}
+
+  /* content */
+  main{flex:1;padding:18px 16px calc(40px + env(safe-area-inset-bottom));}
+  .pane{display:none;}
+  .pane.on{display:block;animation:fade .25s ease;}
+  @keyframes fade{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:none;}}
+
+  .banner{background:#FBF0EC;border:1px solid #E3C3B7;border-left:4px solid var(--rust);
+    border-radius:7px;padding:11px 13px;font-size:13px;margin-bottom:16px;color:#6E3A28;}
+  .banner b{font-weight:700;}
+  .banner.test{background:#F3F6F1;border-color:#BFD0BB;border-left-color:var(--good);
+    color:#365C3F;}
+
+  .secttl{font-family:var(--disp);font-weight:600;font-size:13px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--soft);margin:4px 0 12px;
+    display:flex;align-items:center;gap:9px;}
+  .secttl::after{content:"";flex:1;height:1px;background:var(--rule);}
+
+  /* exercise card */
+  .ex{background:var(--card);border:1px solid var(--rule);border-radius:9px;
+    margin-bottom:11px;overflow:hidden;}
+  .ex-h{padding:11px 13px 9px;display:flex;align-items:flex-start;gap:9px;}
+  .badge{font-family:var(--disp);font-size:9.5px;font-weight:700;letter-spacing:.09em;
+    text-transform:uppercase;padding:3px 7px;border-radius:4px;flex:none;margin-top:2px;
+    background:var(--row);color:var(--soft);}
+  .badge.strength{background:#E5EDF1;color:var(--steel);}
+  .badge.skill{background:#EFE6F0;color:#6A4A6E;}
+  .badge.plyo{background:#F0E7E2;color:var(--rust);}
+  .badge.core{background:#E9EEEA;color:var(--good);}
+  .ex-name{font-family:var(--disp);font-weight:600;font-size:16.5px;line-height:1.15;
+    letter-spacing:.01em;}
+  .ex-cue{font-size:12px;color:var(--soft);margin-top:2px;}
+  .ex-b{padding:0 13px 12px;}
+
+  .target{display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+    background:var(--row);border-radius:6px;padding:7px 10px;margin-bottom:9px;}
+  .target .tlab{font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;
+    font-weight:700;color:var(--soft);}
+  .target .tval{font-family:var(--mono);font-weight:700;font-size:15px;color:var(--steel);}
+  .target .trest{font-family:var(--mono);font-size:12px;color:var(--soft);}
+  .ready{background:#FBF0EC;color:var(--rust);font-size:10px;font-weight:700;
+    letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:4px;}
+
+  .sets{display:flex;flex-wrap:wrap;gap:7px;align-items:center;}
+  .sets .slab{font-size:11px;font-weight:600;color:var(--soft);}
+  .setbox{display:flex;flex-direction:column;align-items:center;}
+  .setbox span{font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--soft);font-weight:700;margin-bottom:2px;}
+  .setbox input{width:52px;height:40px;text-align:center;border:1.5px solid var(--rule);
+    border-radius:7px;font-family:var(--mono);font-weight:700;font-size:16px;color:var(--ink);
+    background:#fff;}
+  .setbox input:focus{outline:none;border-color:var(--steel);}
+  .unit{font-size:11px;color:var(--soft);font-weight:600;align-self:flex-end;
+    margin-bottom:11px;}
+
+  .donebtn{border:1.5px solid var(--rule);background:#fff;border-radius:7px;
+    padding:9px 14px;font-family:var(--disp);font-weight:600;font-size:13px;
+    letter-spacing:.06em;text-transform:uppercase;cursor:pointer;color:var(--soft);}
+  .donebtn.done{background:var(--good);border-color:var(--good);color:#fff;}
+
+  .note{width:100%;margin-top:9px;border:1.5px solid var(--rule);border-radius:7px;
+    padding:8px 10px;font-family:var(--body);font-size:16px;color:var(--ink);resize:none;}
+  .note:focus{outline:none;border-color:var(--steel);}
+
+  /* primary actions */
+  .bigbtn{width:100%;background:var(--rust);color:#fff;border:none;border-radius:9px;
+    padding:15px;font-family:var(--disp);font-weight:700;font-size:16px;letter-spacing:.1em;
+    text-transform:uppercase;cursor:pointer;margin-top:8px;}
+  .bigbtn:active{background:var(--rust-l);}
+  .bigbtn.ghost{background:none;color:var(--steel);border:1.5px solid var(--rule);}
+  .bigbtn.steel{background:var(--steel);}
+
+  /* pass / hold */
+  .ph{display:flex;gap:8px;margin-top:9px;}
+  .ph button{flex:1;border:1.5px solid var(--rule);background:#fff;border-radius:7px;
+    padding:10px;font-family:var(--disp);font-weight:600;font-size:13px;letter-spacing:.07em;
+    text-transform:uppercase;cursor:pointer;color:var(--soft);}
+  .ph button.pass.sel{background:var(--good);border-color:var(--good);color:#fff;}
+  .ph button.hold.sel{background:var(--hold);border-color:var(--hold);color:#fff;}
+  .changed{font-size:11.5px;margin-top:7px;color:var(--good);font-weight:600;}
+  .changed.none{color:var(--soft);}
+
+  /* progress */
+  .prog{background:var(--card);border:1px solid var(--rule);border-radius:9px;
+    padding:10px 13px;margin-bottom:9px;}
+  .prog .pn{font-family:var(--disp);font-weight:600;font-size:15px;}
+  .prog .pr{display:flex;align-items:center;gap:10px;margin-top:5px;}
+  .prog .from{font-family:var(--mono);font-size:12px;color:var(--soft);}
+  .prog .arrow{color:var(--rule);}
+  .prog .to{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--steel);}
+  .bar{flex:1;height:7px;background:var(--row);border-radius:4px;overflow:hidden;
+    min-width:50px;}
+  .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--steel),var(--rust));}
+
+  /* history */
+  .log{background:var(--card);border:1px solid var(--rule);border-radius:9px;
+    margin-bottom:8px;overflow:hidden;}
+  .log summary{padding:11px 13px;cursor:pointer;list-style:none;display:flex;
+    align-items:center;gap:10px;}
+  .log summary::-webkit-details-marker{display:none;}
+  .log .ld{font-family:var(--mono);font-size:12px;color:var(--soft);font-weight:700;}
+  .log .ls{font-family:var(--disp);font-weight:600;font-size:14px;flex:1;}
+  .log .lc{font-size:11px;color:var(--soft);font-weight:600;}
+  .log .body{padding:0 13px 11px;border-top:1px solid var(--rule);}
+  .log .li{display:flex;justify-content:space-between;gap:10px;padding:6px 0;
+    border-bottom:1px solid var(--row);font-size:13px;}
+  .log .li:last-child{border:none;}
+  .log .li .lv{font-family:var(--mono);font-weight:700;color:var(--steel);flex:none;}
+  .log .li .lnote{display:block;font-size:11.5px;color:var(--soft);margin-top:2px;}
+
+  .empty{text-align:center;color:var(--soft);font-size:13px;padding:30px 20px;
+    border:1.5px dashed var(--rule);border-radius:9px;}
+
+  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);
+    background:var(--ink);color:#fff;padding:12px 20px;border-radius:8px;font-size:13.5px;
+    font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.3);opacity:0;transition:.3s;
+    z-index:50;max-width:90%;text-align:center;}
+  .toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
+
+  footer{padding:6px 16px 26px;}
+  footer .row{display:flex;gap:8px;}
+  footer .row .bigbtn{margin-top:8px;}
+  .smallnote{font-size:11px;color:var(--soft);text-align:center;margin-top:14px;
+    line-height:1.5;}
+  .legend{font-size:12px;color:var(--soft);background:var(--card);border:1px solid var(--rule);
+    border-radius:8px;padding:10px 13px;margin-bottom:14px;}
+  .legend b{color:var(--ink);}
+  .legend ol{margin:6px 0 0 18px;}
+  .legend li{margin:2px 0;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <span class="tick"></span>
+      <h1>Training Log</h1>
+      <span class="sub" id="storeMode">52-Week Program</span>
+    </div>
+    <div class="ctl">
+      <div class="stepper">
+        <div class="lab">Week</div>
+        <div class="ln">
+          <button id="wDown">&minus;</button>
+          <span class="val" id="wVal">1</span>
+          <button id="wUp">+</button>
+        </div>
+      </div>
+      <div class="stepper">
+        <div class="lab">Day of Cycle</div>
+        <div class="ln">
+          <button id="dDown">&minus;</button>
+          <span class="val" id="dVal">1</span>
+          <button id="dUp">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="ctx">
+      <span class="phase" id="phaseLab">Phase 1</span>
+      <span class="dl" id="dlTag" style="display:none">Deload</span>
+      <span class="sess" id="sessLab">Upper Body</span>
+    </div>
+    <div class="cycle" id="cycle"></div>
+  </header>
+
+  <nav>
+    <button class="on" data-tab="today">Today</button>
+    <button data-tab="test">Strength Test</button>
+    <button data-tab="progress">Progress</button>
+  </nav>
+
+  <main>
+    <section class="pane on" id="today"></section>
+    <section class="pane" id="test"></section>
+    <section class="pane" id="progress"></section>
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+"use strict";
+
+/* ============================ STORAGE ============================ */
+const Store = (function(){
+  const mem = {};
+  const hasWS = typeof window!=="undefined" && window.storage
+    && typeof window.storage.get==="function";
+  let hasLS = false;
+  try{ const k="__t"+Math.random(); localStorage.setItem(k,"1");
+    localStorage.removeItem(k); hasLS = true; }catch(e){ hasLS=false; }
+  let mode = hasWS ? "cloud" : (hasLS ? "local" : "memory");
+  async function get(key){
+    try{
+      if(mode==="cloud"){ const r=await window.storage.get(key); return r?r.value:null; }
+      if(mode==="local"){ return localStorage.getItem(key); }
+      return (key in mem)?mem[key]:null;
+    }catch(e){ return null; }
+  }
+  async function set(key,val){
+    try{
+      if(mode==="cloud"){ await window.storage.set(key,val,false); return true; }
+      if(mode==="local"){ localStorage.setItem(key,val); return true; }
+      mem[key]=val; return true;
+    }catch(e){ mode="memory"; mem[key]=val; return false; }
+  }
+  return { get, set, get mode(){return mode;} };
+})();
+
+/* ============================ PROGRAM DATA ============================ */
+// progression profiles: {type, start, step, ceil}
+const P = {
+  PUSHUP:{type:"reps",start:10,step:2,ceil:20},
+  PULLUP:{type:"reps",start:2,step:1,ceil:8},
+  DIPS:{type:"reps",start:5,step:2,ceil:12},
+  LEGREPS:{type:"reps",start:10,step:2,ceil:15},
+  UNILEG:{type:"reps",start:8,step:2,ceil:12},
+  NORDIC:{type:"reps",start:5,step:1,ceil:10},
+  TOERAISE:{type:"reps",start:10,step:2,ceil:20},
+  HOLD20:{type:"sec",start:20,step:5,ceil:40},
+  HOLD10:{type:"sec",start:10,step:5,ceil:40},
+  ROCKS:{type:"reps",start:10,step:2,ceil:20},
+  SKILL5:{type:"reps",start:5,step:1,ceil:10},
+  SLIDE:{type:"reps",start:8,step:2,ceil:15}
+};
+const SET_CEIL=4, REST_START=90, REST_STEP=15, REST_FLOOR=45;
+
+// exercise dictionary
+const EX = {
+  // --- fixed: warm-up / mobility / cooldown ---
+  wristprep:{n:"GMB Wrist / Shoulder Prep",b:"warm-up",fixed:1,presc:"5\u20138 min",
+    cue:"Dynamic wrist circles and A-frame transitions."},
+  catstretch:{n:"Strength Side Cat Stretch",b:"mobility",fixed:1,presc:"2 \u00d7 60s",
+    cue:"Slow spinal segmentation \u2014 arch, round, side-shift."},
+  wallslides:{n:"Wall Slides & Thoracic Opener",b:"mobility",fixed:1,presc:"2 \u00d7 60s",
+    cue:"Back to wall, slide arms overhead, keep contact."},
+  latstretch:{n:"Lee Weiland Lat TriStretch",b:"cooldown",fixed:1,presc:"2 \u00d7 45\u201360s",
+    cue:"Kneel, elbows on bench, sink the chest."},
+  cars:{n:"CARS Hip Rotations",b:"warm-up",fixed:1,presc:"2 \u00d7 10\u201315 e/s",
+    cue:"Largest controlled hip circle, no torso tilt."},
+  frog:{n:"GMB Frog Stretch",b:"mobility",fixed:1,presc:"2 \u00d7 60\u201390s",
+    cue:"Knees wide, rock the hips back and forth."},
+  couchstretch:{n:"Couch Stretch",b:"mobility",fixed:1,presc:"2 \u00d7 60s e/s",
+    cue:"Rear foot up, glute squeezed, ribs down \u2014 opens hip extension."},
+  anklerocks:{n:"Knee-to-Wall Ankle Rocks",b:"mobility",fixed:1,presc:"2 \u00d7 10 e/s",
+    cue:"Heel flat, knee tracks over the toes to the wall."},
+  activeham:{n:"Single-Leg Good-Morning Reach",b:"mobility",fixed:1,presc:"2 \u00d7 8 e/s",
+    cue:"Hinge on one leg, flat back, reach long, glute to stand."},
+  footprep:{n:"Short-Foot & Big-Toe Raises",b:"strength",fixed:1,presc:"2 \u00d7 10",
+    cue:"Dome the arch without curling toes; raise the big toe alone."},
+  // --- fixed: plyometrics (not autoregulated) ---
+  boxstepdown:{n:"Box Step-Down Stick Landings",b:"plyo",fixed:1,presc:"2 \u00d7 6 e/s",
+    cue:"Step off a 12\u201316\u2033 box, stick a silent 3-count."},
+  pogo:{n:"Pogo Hops",b:"plyo",fixed:1,presc:"2 \u00d7 15",
+    cue:"Ankle-only bounces, minimal ground contact."},
+  squatjumpbox:{n:"Squat Jump to Box",b:"plyo",fixed:1,presc:"2 \u00d7 5",
+    cue:"Quarter-squat jump up, stick, step down."},
+  broadjump:{n:"Broad Jumps",b:"plyo",fixed:1,presc:"2 \u00d7 5",
+    cue:"Explode forward, soft athletic landing."},
+  splitsquatjump:{n:"Split Squat Jumps",b:"plyo",fixed:1,presc:"2 \u00d7 6 total",
+    cue:"Low switch jumps, equal weight, quiet landings."},
+  boxjump:{n:"Box Jumps",b:"plyo",fixed:1,presc:"2 \u00d7 5",
+    cue:"Silent landing; 18\u201320\u2033 only if clean."},
+  depthdrops:{n:"Depth Drops",b:"plyo",fixed:1,presc:"2 \u00d7 5",
+    cue:"Step off box, land, STICK IT \u2014 no rebound."},
+  bounding:{n:"Bounding",b:"plyo",fixed:1,presc:"2 \u00d7 6 total",
+    cue:"Exaggerated strides for distance, control landings."},
+  slboxjump:{n:"Single-Leg Box Jumps",b:"plyo",fixed:1,presc:"2 \u00d7 4 e/s",
+    cue:"Single-leg takeoff, land on both feet."},
+  depthjumps:{n:"Depth Jumps",b:"plyo",fixed:1,presc:"2 \u00d7 5",
+    cue:"Step off, land, rebound straight up fast."},
+  skaterbounds:{n:"Skater Bounds",b:"plyo",fixed:1,presc:"2 \u00d7 5 e/s",
+    cue:"Explosive lateral push-off, stick each side."},
+  sldepthdrops:{n:"Single-Leg Depth Drops",b:"plyo",fixed:1,presc:"2 \u00d7 4 e/s",
+    cue:"Stick a silent single-leg landing, no hip shift."},
+  contboxjump:{n:"Continuous Box Jumps",b:"plyo",fixed:1,presc:"2 \u00d7 5",
+    cue:"Reactive, minimal pause, step down each rep."},
+  depthjumptobox:{n:"Depth Jump to Box",b:"plyo",fixed:1,presc:"2 \u00d7 4",
+    cue:"Drop, land, immediately jump onto a 2nd box."},
+  slbounding:{n:"Single-Leg Bounding",b:"plyo",fixed:1,presc:"2 \u00d7 6 total",
+    cue:"Repeated single-leg hops for distance."},
+  seatedboxjump:{n:"Seated Box Jumps",b:"plyo",fixed:1,presc:"2 \u00d7 4",
+    cue:"From seated, no rock \u2014 pure concentric explosion onto the box."},
+  lateralbounds:{n:"Lateral Bounds (Stick)",b:"plyo",fixed:1,presc:"2 \u00d7 4 e/s",
+    cue:"Explode sideways, stick a silent 2-second hold."},
+  broadvert:{n:"Broad Jump \u2192 Vertical Chain",b:"plyo",fixed:1,presc:"2 \u00d7 3",
+    cue:"Broad jump, land, immediately rebound straight up."},
+  pogoheight:{n:"Pogo Hops for Height",b:"plyo",fixed:1,presc:"2 \u00d7 10",
+    cue:"Stiff ankles, jump for height off the calves \u2014 knees barely bend."},
+  freehandstand:{n:"Freestanding Handstand Practice",b:"skill",fixed:1,presc:"8\u201310 min",
+    cue:"Kick-up and balance attempts, full rest. Safe exit first."},
+  // --- autoregulated: pressing ---
+  staggered:{n:"Staggered Push-Ups",b:"strength",prof:"PUSHUP",
+    cue:"Hands offset, switch each set, hips square."},
+  declinepu:{n:"Decline Push-Ups",b:"strength",prof:"PUSHUP",
+    cue:"Feet elevated, deep stretch at the bottom."},
+  shouldertap:{n:"Shoulder Tap Push-Ups",b:"strength",prof:"PUSHUP",
+    cue:"Tap opposite shoulder \u2014 zero hip rotation."},
+  standardpu:{n:"Standard Push-Ups",b:"strength",prof:"PUSHUP",
+    cue:"On parallettes, deep range, hollow body held."},
+  ppleans:{n:"Pseudo Planche Leans",b:"strength",prof:"PUSHUP",
+    cue:"Straight arms, lean shoulders past fingertips."},
+  archerpu:{n:"Archer Push-Ups",b:"strength",prof:"PUSHUP",es:1,
+    cue:"Lower to one arm, other arm straight, hips level."},
+  pppushup:{n:"Pseudo Planche Push-Ups",b:"strength",prof:"PUSHUP",
+    cue:"Push-ups in the forward lean, blades protracted."},
+  onearm:{n:"One-Arm Push-Up",b:"strength",prof:"SKILL5",es:1,
+    cue:"Elevated/assisted early; hips square, build the range."},
+  // --- autoregulated: pulling / dips ---
+  pullup:{n:"Pull-Ups",b:"strength",prof:"PULLUP",
+    cue:"Chest to bar, control the descent, full hang."},
+  weightedpullup:{n:"Pull-Ups (Advanced)",b:"strength",prof:"PULLUP",
+    cue:"Archer or 5s-eccentric variation \u2014 harder, not heavier."},
+  dips:{n:"Dips",b:"strength",prof:"DIPS",
+    cue:"Controlled descent, full lockout, slight forward lean."},
+  // --- autoregulated: skill holds ---
+  wallhshold:{n:"Wall Handstand Hold",b:"skill",prof:"HOLD20",
+    cue:"Chest-to-wall, shoulders stacked, hollow body."},
+  wallhspu:{n:"Wall Handstand Push-Ups",b:"skill",prof:"SKILL5",
+    cue:"Partial to full range; elbows track forward."},
+  tuckplanche:{n:"Tuck Planche Hold",b:"skill",prof:"HOLD10",
+    cue:"Hips at shoulder height, arms locked straight."},
+  // --- autoregulated: legs ---
+  slsquat:{n:"Single-Leg Squats",b:"strength",prof:"LEGREPS",es:1,
+    cue:"Slow controlled descent, heel flat. Owned? 4s down, 2s pause."},
+  bulgarian:{n:"Bulgarian Split Squats",b:"strength",prof:"LEGREPS",es:1,
+    cue:"Rear foot elevated, front shin vertical. Owned? 4s down, 2s pause."},
+  bulgarianloaded:{n:"Bulgarian Split Squats (Tempo)",b:"strength",prof:"LEGREPS",es:1,
+    cue:"4s descent, 2s pause at the bottom \u2014 the load is the tempo."},
+  cossack:{n:"Cossack Squats",b:"strength",prof:"LEGREPS",es:1,
+    cue:"Deep side-to-side, working heel stays flat. Owned? 4s down, 2s pause."},
+  cossackloaded:{n:"Cossack Squats (Tempo)",b:"strength",prof:"LEGREPS",es:1,
+    cue:"4s descent, 2s pause in the deep position each side."},
+  shrimp:{n:"Shrimp Squats",b:"strength",prof:"UNILEG",es:1,
+    cue:"Hold rear ankle, control the eccentric. Owned? 4s down, 2s pause."},
+  pistol:{n:"Pistol Squats",b:"strength",prof:"UNILEG",es:1,
+    cue:"Full single-leg squat \u2014 assist early. Owned? 4s down, 2s pause."},
+  pistolloaded:{n:"Pistol Squats (Tempo)",b:"strength",prof:"UNILEG",es:1,
+    cue:"4s descent, 2s pause at the bottom, no bounce out."},
+  nordic:{n:"Nordic Hamstring Curls",b:"strength",prof:"NORDIC",
+    cue:"Slow eccentric, band-assist as needed."},
+  slidingcurl:{n:"Sliding Leg Curls",b:"strength",prof:"SLIDE",
+    cue:"Hips bridged on sliders/towel \u2014 slide out, drag back, hips never drop."},
+  slhipthrust:{n:"Single-Leg Hip Thrust",b:"strength",prof:"LEGREPS",es:1,
+    cue:"Shoulders on bench, full lockout, 1s glute squeeze at top."},
+  slrdl:{n:"Single-Leg RDL",b:"strength",prof:"UNILEG",es:1,
+    cue:"Hip-back bow on one leg, flat back, glutes finish the rep."},
+  stepups:{n:"High Step-Ups (Slow Eccentric)",b:"strength",prof:"UNILEG",es:1,
+    cue:"Knee-height box, drive up, lower on a 4\u20135s count."},
+  toeraise:{n:"Toe / Front Toe Raises",b:"strength",prof:"TOERAISE",
+    cue:"Calf raises and front toe raises for ankle health."},
+  horsestance:{n:"Horse Stance Hold",b:"strength",prof:"HOLD20",
+    cue:"Thighs parallel, spine vertical, tailbone tucked."},
+  // --- autoregulated: core ---
+  hollowhold:{n:"Hollow Hold",b:"core",prof:"HOLD20",
+    cue:"Lower back pressed flat, arms and legs hovering."},
+  plank:{n:"Plank / Side Plank",b:"core",prof:"HOLD20",
+    cue:"Tailbone tucked, glutes squeezed, full tension."},
+  superman:{n:"Superman",b:"core",prof:"HOLD20",
+    cue:"Lift chest and thighs \u2014 mid-back, not low back."},
+  lsit:{n:"L-Sit Hold",b:"core",prof:"HOLD10",
+    cue:"Shoulders depressed, arms locked, legs straight."},
+  hollowrocks:{n:"Hollow Body Rocks",b:"core",prof:"ROCKS",
+    cue:"Rock the body while holding the hollow shape."},
+  vsit:{n:"V-Sit Hold",b:"core",prof:"HOLD10",
+    cue:"From the L-sit, raise straight legs above hip height."},
+  bearcrawl:{n:"Bear Crawl Hold",b:"core",prof:"HOLD20",
+    cue:"Hands under shoulders, knees hovering an inch off the floor, back flat as a table."},
+  deadbug:{n:"Dead Bug Hold",b:"core",prof:"HOLD20",es:1,
+    cue:"Lower back pinned flat; extend the opposite arm and leg and hold without arching."},
+  glutebridge:{n:"Glute Bridge Hold",b:"core",prof:"HOLD20",
+    cue:"Drive through the heels to a straight knee-to-shoulder line; squeeze glutes, ribs down."},
+  birddog:{n:"Bird Dog Hold",b:"core",prof:"HOLD20",es:1,
+    cue:"From all fours, extend the opposite arm and leg level with the torso; hold square."},
+  suitcase:{n:"Suitcase Carry Hold",b:"core",prof:"HOLD20",es:1,
+    cue:"Hold a weight at one side, stand tall, resist leaning. Use a backpack or jug."}
+};
+
+// phases: A=upper, C=core, B=lower
+const PHASES = [
+  {n:1,name:"Structural Integrity",lo:1,hi:8,
+    A:["wristprep","catstretch","staggered","declinepu","shouldertap","standardpu","pullup","dips","latstretch"],
+    C:["hollowhold","plank","superman","bearcrawl","deadbug","glutebridge","birddog","suitcase"],
+    B:["cars","frog","couchstretch","anklerocks","activeham","boxstepdown","pogo","squatjumpbox","slsquat","bulgarian","cossack","slrdl","slidingcurl","slhipthrust","horsestance","toeraise","footprep"]},
+  {n:2,name:"Range Development",lo:9,hi:16,
+    A:["wristprep","catstretch","staggered","declinepu","shouldertap","ppleans","standardpu","pullup","dips","latstretch"],
+    C:["hollowhold","plank","lsit","superman","bearcrawl","deadbug","glutebridge","birddog","suitcase"],
+    B:["cars","frog","couchstretch","anklerocks","activeham","broadjump","splitsquatjump","boxjump","seatedboxjump","slsquat","bulgarian","cossack","shrimp","slrdl","slidingcurl","slhipthrust","stepups","horsestance","toeraise","footprep"]},
+  {n:3,name:"Advanced Strength",lo:17,hi:24,
+    A:["wristprep","catstretch","archerpu","declinepu","shouldertap","pppushup","pullup","dips","latstretch"],
+    C:["hollowrocks","lsit","plank","superman","bearcrawl","deadbug","glutebridge","birddog","suitcase"],
+    B:["cars","frog","couchstretch","anklerocks","activeham","depthdrops","bounding","slboxjump","seatedboxjump","lateralbounds","pistol","bulgarian","cossack","shrimp","nordic","slidingcurl","slhipthrust","slrdl","stepups","horsestance","toeraise","footprep"]},
+  {n:4,name:"Reactive Strength & Loaded Basics",lo:27,hi:34,
+    A:["wristprep","wallslides","wallhshold","shouldertap","pppushup","archerpu","pullup","dips","latstretch"],
+    C:["hollowrocks","lsit","plank","superman","bearcrawl","deadbug","glutebridge","birddog","suitcase"],
+    B:["cars","frog","couchstretch","anklerocks","depthjumps","skaterbounds","bounding","pogoheight","pistol","bulgarianloaded","nordic","cossack","slidingcurl","slhipthrust","slrdl","stepups","horsestance","toeraise","footprep"]},
+  {n:5,name:"Skill Acquisition & Unilateral Power",lo:35,hi:42,
+    A:["wristprep","wallslides","wallhspu","tuckplanche","onearm","pppushup","pullup","dips","latstretch"],
+    C:["vsit","hollowrocks","plank","superman","bearcrawl","deadbug","glutebridge","birddog","suitcase"],
+    B:["cars","frog","couchstretch","anklerocks","sldepthdrops","contboxjump","bounding","broadvert","pistolloaded","shrimp","nordic","cossack","slidingcurl","slhipthrust","slrdl","horsestance"]},
+  {n:6,name:"Peak Complexity & Expression",lo:43,hi:50,
+    A:["wristprep","wallslides","freehandstand","tuckplanche","wallhspu","onearm","weightedpullup","dips","latstretch"],
+    C:["vsit","hollowrocks","plank","superman","bearcrawl","deadbug","glutebridge","birddog","suitcase"],
+    B:["cars","frog","couchstretch","anklerocks","depthjumptobox","slbounding","skaterbounds","broadvert","pistolloaded","nordic","shrimp","cossackloaded","slidingcurl","slhipthrust","slrdl","horsestance"]}
+];
+const DAY_SESSION = {1:"B",2:"C",3:"A",4:"C",5:"B",6:"C",7:"A"};
+const SESSION_NAME = {A:"Upper Body \u2014 Push, Pull & Dips",C:"Core Session",
+  B:"Lower Body \u2014 Legs & Plyometrics"};
+
+/* week -> context */
+function ctxFor(week){
+  if(week>=25 && week<=26) return {phase:PHASES[2],deload:true,phaseLabel:"Deload & Mid-Year Test"};
+  if(week>=51 && week<=52) return {phase:PHASES[5],deload:true,phaseLabel:"Deload & Annual Test"};
+  for(const ph of PHASES){ if(week>=ph.lo && week<=ph.hi)
+    return {phase:ph,deload:false,phaseLabel:"Phase "+ph.n}; }
+  return {phase:PHASES[0],deload:false,phaseLabel:"Phase 1"};
+}
+
+/* ============================ STATE ============================ */
+let S = { week:1, day:1 };      // settings
+let XS = {};                    // exercise progression state {id:{sets,value,rest,ready}}
+let LOGS = [];                  // session logs
+
+function profOf(id){ return P[EX[id].prof]; }
+function freshState(id){
+  return { sets:2, value:profOf(id).start, rest:REST_START, ready:false };
+}
+function ensureStates(ids){
+  let changed=false;
+  ids.forEach(id=>{
+    if(EX[id].fixed) return;
+    if(!XS[id]){ XS[id]=freshState(id); changed=true; }
+  });
+  if(changed) saveXS();
+  return changed;
+}
+function applyIncrement(id){
+  const st=XS[id], pr=profOf(id);
+  if(st.value < pr.ceil){
+    st.value=Math.min(st.value+pr.step,pr.ceil); return "+"+pr.step+(pr.type==="sec"?"s per set":" reps per set");
+  } else if(st.sets < SET_CEIL){
+    st.sets+=1; st.value=pr.start; return "added a set \u2014 now "+st.sets+" sets";
+  } else if(st.rest > REST_FLOOR){
+    st.rest-=REST_STEP; return "cut rest to "+st.rest+"s";
+  } else {
+    st.ready=true; return "maxed \u2014 progress to a harder variation";
+  }
+}
+function targetStr(id){
+  const st=XS[id], pr=profOf(id), es=EX[id].es?" e/s":"";
+  return st.sets+" \u00d7 "+st.value+(pr.type==="sec"?"s":(" rep"+(st.value===1?"":"s")))+es;
+}
+
+/* ---- persistence ---- */
+async function saveS(){ await Store.set("wt:settings",JSON.stringify(S)); }
+async function saveXS(){ await Store.set("wt:exstate",JSON.stringify(XS)); }
+async function saveLOGS(){ await Store.set("wt:logs",JSON.stringify(LOGS)); }
+
+async function loadAll(){
+  try{ const s=await Store.get("wt:settings"); if(s){ const o=JSON.parse(s);
+    if(o&&o.week){ S.week=o.week; S.day=o.day||1; } } }catch(e){}
+  try{ const x=await Store.get("wt:exstate"); if(x){ XS=JSON.parse(x)||{}; } }catch(e){}
+  try{ const l=await Store.get("wt:logs"); if(l){ LOGS=JSON.parse(l)||[]; } }catch(e){}
+}
+
+/* ============================ HELPERS ============================ */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function toast(msg){
+  const t=$("#toast"); t.textContent=msg; t.classList.add("show");
+  clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove("show"),2200);
+}
+function clamp(v,lo,hi){ return Math.max(lo,Math.min(hi,v)); }
+
+/* ============================ HEADER / CONTEXT ============================ */
+function renderHeader(){
+  $("#wVal").textContent=S.week;
+  $("#dVal").textContent=S.day;
+  const c=ctxFor(S.week);
+  $("#phaseLab").textContent=c.phaseLabel;
+  $("#dlTag").style.display=c.deload?"":"none";
+  const sess=DAY_SESSION[S.day];
+  $("#sessLab").textContent="Day "+S.day+" \u00b7 "+SESSION_NAME[sess];
+  // cycle strip
+  const ab={A:"Upper",B:"Legs",C:"Core"};
+  let html="";
+  for(let d=1;d<=7;d++){
+    const lab=ab[DAY_SESSION[d]];
+    html+='<div class="d'+(d===S.day?" on":"")+'"><span class="dn">D'+d+
+      '</span><span class="dt">'+lab+'</span></div>';
+  }
+  $("#cycle").innerHTML=html;
+}
+
+/* ============================ TODAY PANE ============================ */
+function sessionIds(){
+  const c=ctxFor(S.week);
+  const sess=DAY_SESSION[S.day];
+  return { ids:c.phase[sess], sess, ctx:c };
+}
+function renderToday(){
+  const {ids,sess,ctx}=sessionIds();
+  ensureStates(ids);
+  const el=$("#today"); el.innerHTML="";
+
+  if(S.week>52){
+    el.innerHTML='<div class="empty"><b>Program complete.</b><br>'+
+      'All 52 weeks logged. Set the week back to review, or start a new cycle.</div>';
+    return;
+  }
+
+  if(ctx.deload){
+    el.insertAdjacentHTML("beforeend",
+      '<div class="banner"><b>Deload week.</b> Cut all volume roughly in half \u2014 '+
+      'keep the same exercises, halve the sets and reps, and log lightly. '+
+      'Recovery is the goal, not stimulus.</div>');
+  }
+  el.insertAdjacentHTML("beforeend",
+    '<div class="secttl">Day '+S.day+' &middot; '+esc(SESSION_NAME[sess])+'</div>');
+
+  ids.forEach(id=>{
+    const x=EX[id];
+    let inner="";
+    if(x.fixed){
+      inner =
+        '<div class="target"><span class="tlab">Prescribed</span>'+
+        '<span class="tval">'+esc(x.presc)+'</span></div>'+
+        '<button class="donebtn" data-done="'+id+'">Mark Complete</button>';
+    }else{
+      const st=XS[id], pr=profOf(id);
+      let sets="";
+      for(let i=0;i<st.sets;i++){
+        sets+='<div class="setbox"><span>Set '+(i+1)+'</span>'+
+          '<input inputmode="numeric" data-log="'+id+'" data-i="'+i+'" '+
+          'value="'+st.value+'"></div>';
+      }
+      const unit=pr.type==="sec"?"sec":"reps";
+      inner =
+        '<div class="target"><span class="tlab">Target</span>'+
+        '<span class="tval">'+esc(targetStr(id))+'</span>'+
+        '<span class="trest">rest '+st.rest+'s</span>'+
+        (st.ready?'<span class="ready">Ready to progress</span>':'')+'</div>'+
+        '<div class="sets"><span class="slab">Logged:</span>'+sets+
+        '<span class="unit">'+unit+'</span></div>';
+    }
+    el.insertAdjacentHTML("beforeend",
+      '<div class="ex" data-ex="'+id+'">'+
+        '<div class="ex-h"><span class="badge '+x.b.replace(/[^a-z]/g,'')+'">'+
+          esc(x.b)+'</span>'+
+          '<div><div class="ex-name">'+esc(x.n)+'</div>'+
+          '<div class="ex-cue">'+esc(x.cue)+'</div></div></div>'+
+        '<div class="ex-b">'+inner+
+          '<textarea class="note" rows="1" placeholder="Notes (optional)" '+
+          'data-note="'+id+'"></textarea></div>'+
+      '</div>');
+  });
+
+  el.insertAdjacentHTML("beforeend",
+    '<button class="bigbtn" id="saveBtn">Save Session</button>');
+
+  // events
+  el.querySelectorAll("[data-done]").forEach(b=>{
+    b.addEventListener("click",()=>{
+      b.classList.toggle("done");
+      b.textContent=b.classList.contains("done")?"Completed \u2713":"Mark Complete";
+    });
+  });
+  $("#saveBtn").addEventListener("click",saveSession);
+}
+
+async function saveSession(){
+  const {ids,sess,ctx}=sessionIds();
+  const entries=[];
+  ids.forEach(id=>{
+    const x=EX[id];
+    const noteEl=$('[data-note="'+id+'"]');
+    const note=noteEl?noteEl.value.trim():"";
+    if(x.fixed){
+      const done=$('[data-done="'+id+'"]').classList.contains("done");
+      entries.push({id:id,name:x.n,fixed:true,done:done,note:note});
+    }else{
+      const vals=[];
+      document.querySelectorAll('[data-log="'+id+'"]').forEach(inp=>{
+        const v=parseInt(inp.value,10);
+        vals.push(isNaN(v)?0:v);
+      });
+      entries.push({id:id,name:x.n,vals:vals,unit:profOf(id).type,
+        target:targetStr(id),note:note});
+    }
+  });
+  LOGS.push({
+    ts:Date.now(), week:S.week, day:S.day, phase:ctx.phaseLabel,
+    deload:ctx.deload, session:SESSION_NAME[sess], entries:entries
+  });
+  await saveLOGS();
+  toast("Session saved \u00b7 Week "+S.week+", Day "+S.day);
+  // advance day
+  let nd=S.day+1, nw=S.week;
+  if(nd>7){ nd=1; nw=Math.min(52,S.week+1); }
+  S.day=nd; S.week=nw;
+  await saveS();
+  renderHeader(); renderToday(); renderProgress();
+}
+
+/* ============================ STRENGTH TEST PANE ============================ */
+let testMarks={}; // id -> 'pass'|'hold'
+function renderTest(){
+  const el=$("#test"); el.innerHTML="";
+  const isTestWk = S.week%2===0;
+
+  el.insertAdjacentHTML("beforeend",
+    '<div class="legend"><b>How the strength test works.</b> At the end of every '+
+    'even-numbered week, judge each exercise: did you hit every set at target with '+
+    '1\u20132 clean reps in reserve? If yes, mark <b>Pass</b> and the engine applies '+
+    'one increase in this priority:'+
+    '<ol><li>Add reps / time, up to the ceiling.</li>'+
+    '<li>Add a set (max 4), reps reset to start.</li>'+
+    '<li>Cut rest by 15s, down to a 45s floor.</li>'+
+    '<li>At the ceiling on all three \u2014 progress to a harder variation.</li></ol>'+
+    'Plyometrics are not autoregulated and never appear here.</div>');
+
+  el.insertAdjacentHTML("beforeend", isTestWk
+    ? '<div class="banner test"><b>Week '+S.week+' is a test week.</b> Run the test '+
+      'and bank every increase you earned.</div>'
+    : '<div class="banner"><b>Week '+S.week+' is not a test week.</b> The next test '+
+      'falls on Week '+(S.week+ (S.week%2===0?2:1))+'. You can still apply increases '+
+      'here if you have earned them.</div>');
+
+  // exercises with state, grouped
+  const ids=Object.keys(XS).filter(id=>EX[id]);
+  if(ids.length===0){
+    el.insertAdjacentHTML("beforeend",
+      '<div class="empty">No exercises tracked yet.<br>Log a session on the '+
+      'Today tab and they will appear here.</div>');
+    return;
+  }
+  const order=["strength","skill","core"];
+  order.forEach(grp=>{
+    const g=ids.filter(id=>EX[id].b===grp);
+    if(!g.length) return;
+    el.insertAdjacentHTML("beforeend",
+      '<div class="secttl">'+grp+'</div>');
+    g.forEach(id=>{
+      const x=EX[id], st=XS[id], pr=profOf(id);
+      const mark=testMarks[id];
+      el.insertAdjacentHTML("beforeend",
+        '<div class="ex" data-test="'+id+'">'+
+          '<div class="ex-h"><span class="badge '+x.b+'">'+esc(x.b)+'</span>'+
+            '<div><div class="ex-name">'+esc(x.n)+'</div>'+
+            '<div class="ex-cue">'+esc(x.cue)+'</div></div></div>'+
+          '<div class="ex-b">'+
+            '<div class="target"><span class="tlab">Current</span>'+
+              '<span class="tval">'+esc(targetStr(id))+'</span>'+
+              '<span class="trest">rest '+st.rest+'s</span>'+
+              (st.ready?'<span class="ready">Maxed</span>':'')+'</div>'+
+            '<div class="ph">'+
+              '<button class="pass'+(mark==="pass"?" sel":"")+'" data-pass="'+id+'">Pass</button>'+
+              '<button class="hold'+(mark==="hold"?" sel":"")+'" data-hold="'+id+'">Hold</button>'+
+            '</div>'+
+            '<div class="changed'+(mark?"":" none")+'" data-ch="'+id+'">'+
+              (mark==="pass"?"Increase applied.":mark==="hold"?"Held at current level.":
+               "Mark Pass or Hold.")+'</div>'+
+          '</div>'+
+        '</div>');
+    });
+  });
+
+  el.querySelectorAll("[data-pass]").forEach(b=>{
+    b.addEventListener("click",async()=>{
+      const id=b.getAttribute("data-pass");
+      if(testMarks[id]==="pass") return;
+      testMarks[id]="pass";
+      const what=applyIncrement(id);
+      await saveXS();
+      const ch=$('[data-ch="'+id+'"]');
+      ch.classList.remove("none");
+      ch.textContent="Passed \u2014 "+what+". New target "+targetStr(id)+".";
+      b.classList.add("sel");
+      const hb=document.querySelector('[data-hold="'+id+'"]');
+      if(hb) hb.classList.remove("sel");
+      // refresh the current line
+      const tv=b.closest(".ex-b").querySelector(".tval");
+      if(tv) tv.textContent=targetStr(id);
+      toast(EX[id].n+": "+what);
+      renderProgress();
+    });
+  });
+  el.querySelectorAll("[data-hold]").forEach(b=>{
+    b.addEventListener("click",()=>{
+      const id=b.getAttribute("data-hold");
+      if(testMarks[id]==="pass"){
+        toast("Increase already applied this round."); return;
+      }
+      testMarks[id]="hold";
+      b.classList.add("sel");
+      const ch=$('[data-ch="'+id+'"]');
+      ch.classList.remove("none");
+      ch.textContent="Held at current level. Train two more weeks, then retest.";
+    });
+  });
+}
+
+/* ============================ PROGRESS PANE ============================ */
+function renderProgress(){
+  const el=$("#progress"); el.innerHTML="";
+
+  // ---- progression list ----
+  el.insertAdjacentHTML("beforeend",'<div class="secttl">Exercise Progression</div>');
+  const ids=Object.keys(XS).filter(id=>EX[id]);
+  if(ids.length===0){
+    el.insertAdjacentHTML("beforeend",
+      '<div class="empty">Nothing tracked yet. Log your first session on the Today tab.</div>');
+  }else{
+    ids.sort((a,b)=>EX[a].n.localeCompare(EX[b].n));
+    ids.forEach(id=>{
+      const x=EX[id], st=XS[id], pr=profOf(id);
+      const startStr="2 \u00d7 "+pr.start+(pr.type==="sec"?"s":" reps");
+      // crude progress fraction across the ladder
+      const valSpan=(pr.ceil-pr.start)||1;
+      const valFrac=(st.value-pr.start)/valSpan;            // 0..1 within current set tier
+      const setFrac=(st.sets-2)/(SET_CEIL-2);               // 0..1
+      const restFrac=(REST_START-st.rest)/(REST_START-REST_FLOOR);
+      let frac=(setFrac*( (valSpan>0?1:1) ) );
+      // overall: tiers = sets dimension dominant, then value, then rest
+      let pct=( (st.sets-2) + valFrac ) / ( (SET_CEIL-2) + 1 );
+      pct=clamp(pct,0,1);
+      if(st.ready) pct=1;
+      el.insertAdjacentHTML("beforeend",
+        '<div class="prog">'+
+          '<div class="pn">'+esc(x.n)+(st.ready?
+            ' <span class="ready">Ready to progress</span>':'')+'</div>'+
+          '<div class="pr">'+
+            '<span class="from">'+startStr+'</span>'+
+            '<span class="arrow">&rarr;</span>'+
+            '<span class="to">'+esc(targetStr(id))+' &middot; '+st.rest+'s</span>'+
+          '</div>'+
+          '<div class="pr"><div class="bar"><i style="width:'+(pct*100).toFixed(0)+'%"></i></div></div>'+
+        '</div>');
+    });
+  }
+
+  // ---- session history ----
+  el.insertAdjacentHTML("beforeend",'<div class="secttl">Session History</div>');
+  if(LOGS.length===0){
+    el.insertAdjacentHTML("beforeend",
+      '<div class="empty">No sessions logged yet.</div>');
+  }else{
+    const sorted=LOGS.slice().sort((a,b)=>b.ts-a.ts);
+    sorted.forEach((lg)=>{
+      const d=new Date(lg.ts);
+      const ds=(d.getMonth()+1)+"/"+d.getDate();
+      let rows="";
+      lg.entries.forEach(en=>{
+        let v;
+        if(en.fixed){ v=en.done?"\u2713 done":"\u2014"; }
+        else{
+          const u=en.unit==="sec"?"s":"";
+          v=(en.vals&&en.vals.length)?en.vals.join(" / ")+u:"\u2014";
+        }
+        rows+='<div class="li"><span>'+esc(en.name)+
+          (en.note?'<span class="lnote">'+esc(en.note)+'</span>':'')+
+          '</span><span class="lv">'+esc(v)+'</span></div>';
+      });
+      el.insertAdjacentHTML("beforeend",
+        '<details class="log"><summary>'+
+          '<span class="ld">'+ds+'</span>'+
+          '<span class="ls">W'+lg.week+' D'+lg.day+' &middot; '+
+            esc(lg.session.split(" \u2014 ")[0])+'</span>'+
+          '<span class="lc">'+lg.entries.length+' items</span>'+
+        '</summary><div class="body">'+rows+'</div></details>');
+    });
+  }
+
+  // ---- data tools ----
+  el.insertAdjacentHTML("beforeend",
+    '<div class="secttl" style="margin-top:22px">Data</div>'+
+    '<div class="row" style="display:flex;gap:8px">'+
+      '<button class="bigbtn ghost" id="expBtn">Export Backup</button>'+
+      '<button class="bigbtn ghost" id="impBtn">Import</button>'+
+    '</div>'+
+    '<button class="bigbtn ghost" id="resetBtn" style="color:var(--rust);'+
+      'border-color:#E3C3B7;margin-top:8px">Reset All Data</button>'+
+    '<div class="smallnote">Storage mode: <b>'+Store.mode+'</b>. '+
+      (Store.mode==="memory"
+        ? "Warning \u2014 data will NOT persist after closing. Export a backup to keep it."
+        : "Your log is saved automatically and persists between sessions.")+
+      '<br>Export regularly to keep a backup of your training year.</div>');
+
+  $("#expBtn").addEventListener("click",exportData);
+  $("#impBtn").addEventListener("click",importData);
+  $("#resetBtn").addEventListener("click",resetData);
+}
+
+/* ---- data tools ---- */
+function exportData(){
+  const blob={settings:S,exstate:XS,logs:LOGS,exported:new Date().toISOString()};
+  const str=JSON.stringify(blob);
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(str).then(
+      ()=>toast("Backup copied to clipboard ("+LOGS.length+" sessions)"),
+      ()=>fallbackCopy(str));
+  }else{ fallbackCopy(str); }
+}
+function fallbackCopy(str){
+  window.prompt("Copy your backup data (Ctrl/Cmd+C):",str);
+}
+async function importData(){
+  const str=window.prompt("Paste a previously exported backup:");
+  if(!str) return;
+  try{
+    const o=JSON.parse(str);
+    if(o.settings) S=Object.assign({week:1,day:1},o.settings);
+    if(o.exstate) XS=o.exstate;
+    if(o.logs) LOGS=o.logs;
+    await saveS(); await saveXS(); await saveLOGS();
+    renderHeader(); renderToday(); renderTest(); renderProgress();
+    toast("Backup imported \u00b7 "+LOGS.length+" sessions");
+  }catch(e){ toast("Could not read that backup."); }
+}
+async function resetData(){
+  if(!window.confirm("Erase all logged sessions and progression? This cannot be undone."))
+    return;
+  S={week:1,day:1}; XS={}; LOGS=[]; testMarks={};
+  await saveS(); await saveXS(); await saveLOGS();
+  renderHeader(); renderToday(); renderTest(); renderProgress();
+  toast("All data reset.");
+}
+
+/* ============================ NAV / STEPPERS ============================ */
+function setTab(name){
+  document.querySelectorAll("nav button").forEach(b=>
+    b.classList.toggle("on",b.getAttribute("data-tab")===name));
+  document.querySelectorAll(".pane").forEach(p=>
+    p.classList.toggle("on",p.id===name));
+  if(name==="test"){ testMarks={}; renderTest(); }
+  if(name==="progress") renderProgress();
+  window.scrollTo(0,0);
+}
+function bindUI(){
+  document.querySelectorAll("nav button").forEach(b=>
+    b.addEventListener("click",()=>setTab(b.getAttribute("data-tab"))));
+
+  $("#wUp").addEventListener("click",async()=>{
+    S.week=clamp(S.week+1,1,53); await saveS(); refreshAll(); });
+  $("#wDown").addEventListener("click",async()=>{
+    S.week=clamp(S.week-1,1,53); await saveS(); refreshAll(); });
+  $("#dUp").addEventListener("click",async()=>{
+    S.day=S.day>=7?1:S.day+1; await saveS(); refreshAll(); });
+  $("#dDown").addEventListener("click",async()=>{
+    S.day=S.day<=1?7:S.day-1; await saveS(); refreshAll(); });
+}
+function refreshAll(){
+  renderHeader(); renderToday(); renderTest(); renderProgress();
+}
+
+/* ============================ INIT ============================ */
+(async function init(){
+  bindUI();
+  await loadAll();
+  if(S.week<1) S.week=1; if(S.day<1||S.day>7) S.day=1;
+  refreshAll();
+})();
+</script>
+</body>
+</html>
